@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Page</title>
+    <link rel="stylesheet" href="loading-styles.css">
+</head>
+<body>
+    <!-- Loading screen content -->
+    <div id="loading-screen">
+        <div class="loading-spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <script>
+        // Automatically redirect to the main page after 3 seconds (3000ms)
+        setTimeout(() => {
+            window.location.href = "index.html"; // Replace with the actual main page URL
+        }, 3000); // Adjust the timeout as needed
+    </script>
+</body>
+</html>

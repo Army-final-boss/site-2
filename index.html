@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARMY CHEAT</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="outer-container">
+        <video id="background-video" loop muted autoplay>
+            <source src="Guy2Bezbar - Monaco (Clip Officiel).mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <div class="container">
+            <div class="transparent-box">
+                <h1>ARMY CHEAT</h1>
+                <div class="buttons">
+                    <button onclick="openLoader()">LOADER</button>
+                    <button onclick="openUnban()">UNBAN</button>
+                    <button onclick="openDiscord()">Discord</button>
+                </div>
+
+                <!-- Lecteur audio personnalisé -->
+                <div class="audio-player">
+                    <audio id="background-music" src="C:/Users/BB YESSSSSSSS BB/Desktop/site 2/musique.mp3"></audio>
+                    <div class="controls">
+                        <button id="prev" class="prev" onclick="prevTrack()"></button>
+                        <button id="play-pause" class="play" onclick="togglePlayPause()"></button>
+                        <button id="next" class="next" onclick="nextTrack()"></button>
+                        <input type="range" id="progress-bar" value="0" max="100">
+                        <span id="current-time">0:00</span> / <span id="duration">0:00</span>
+                        <input type="range" id="volume-bar" min="0" max="1" step="0.1" value="1" oninput="setVolume(this.value)">
+                        <i class="fas fa-volume-up"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var audio = document.getElementById("background-music");
+        var playPauseBtn = document.getElementById("play-pause");
+        var progressBar = document.getElementById("progress-bar");
+        var currentTimeEl = document.getElementById("current-time");
+        var durationEl = document.getElementById("duration");
+        var volumeBar = document.getElementById("volume-bar");
+
+        function togglePlayPause() {
+            if (audio.paused || audio.ended) {
+                audio.play();
+                playPauseBtn.classList.add("playing");
+            } else {
+                audio.pause();
+                playPauseBtn.classList.remove("playing");
+            }
+        }
+
+        audio.onloadedmetadata = function() {
+            progressBar.max = audio.duration;
+            durationEl.textContent = formatTime(audio.duration);
+        };
+
+        audio.ontimeupdate = function() {
+            progressBar.value = audio.currentTime;
+            currentTimeEl.textContent = formatTime(audio.currentTime);
+        };
+
+        progressBar.oninput = function() {
+            audio.currentTime = progressBar.value;
+        };
+
+        function formatTime(time) {
+            const minutes = Math.floor(time / 60);
+            const seconds = Math.floor(time % 60);
+            return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        }
+
+        function setVolume(value) {
+            audio.volume = value;
+        }
+
+        function prevTrack() {
+            // Functionality for previous button
+            audio.currentTime -= 10; // Example: go back 10 seconds
+        }
+
+        function nextTrack() {
+            // Functionality for next button
+            audio.currentTime += 10; // Example: go forward 10 seconds
+        }
+    </script>
+</body>
+</html>
